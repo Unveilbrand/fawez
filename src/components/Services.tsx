@@ -79,7 +79,7 @@ export default function Services() {
           Compassionate Support for Every Part of Daily Living
         </h2>
 
-        <div className="mx-auto mt-12 grid max-w-[1100px] gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
+        <div className="mx-auto mt-12 grid max-w-[1100px] gap-x-6 gap-y-[34px] sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-[42px]">
           {services.map(({ title, description, image }) => (
             <article
               key={title}

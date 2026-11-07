@@ -73,8 +73,8 @@ export default function Testimonials() {
       />
 
       <div className="site-container">
-        <p className="text-center text-sm font-medium uppercase text-primary">What People Say</p>
-        <h2 className="mt-4 text-center text-3xl font-bold text-black sm:text-4xl lg:text-[36px]">
+        <p className="text-center text-sm font-medium uppercase text-white">What People Say</p>
+        <h2 className="mt-4 text-center text-3xl font-bold text-white sm:text-4xl lg:text-[36px]">
           Customer Testimonials
         </h2>
 

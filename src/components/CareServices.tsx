@@ -15,7 +15,7 @@ export default function CareServices() {
         alt="Caregiver helping a young girl walk with a pediatric walker"
         fill
         sizes="100vw"
-        className="-z-10 object-cover object-[55%_center]"
+        className="-z-10 object-cover object-center -translate-x-[7%] scale-110"
       />
       <div
         className="absolute inset-0 -z-10"
@@ -28,17 +28,15 @@ export default function CareServices() {
       <div className="site-container flex flex-col items-center gap-12 py-16 md:py-24 lg:flex-row lg:items-center lg:justify-between lg:py-28">
         <div className="max-w-[400px]">
           <p className="text-sm font-medium uppercase text-primary">Possible Care Services</p>
-          <h2 className="mt-5 text-3xl font-bold text-black sm:text-4xl lg:text-[42px] lg:leading-tight">
+          <h2 className="mt-5 text-3xl font-bold text-black sm:text-4xl lg:text-[42px]">
             How Do Home Healthcare And Home Care Work Together?
           </h2>
-          <p className="mt-6 text-sm font-bold leading-snug text-black lg:text-base">
+          <p className="mt-6 text-sm font-bold leading-snug text-black lg:text-base lg:text-[20px] max-w-[220px]">
             We cannot change or recommend a therapy.
-            <br />
             We are non medical.
-            <br />
             We follow orders.
           </p>
-          <p className="mt-5 text-sm leading-relaxed text-black lg:text-base">
+          <p className="mt-5 text-sm leading-relaxed text-black lg:text-base max-w-[320px]">
             Our well trained caregivers will provide tailored care for you and family members as
             recommended and adhere strictly to our esteem standards for safety and well being of
             our clients.
