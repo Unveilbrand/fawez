@@ -38,13 +38,13 @@ export default function Hero() {
               href="/contact"
               className="rounded-sm border-2 border-primary bg-primary px-6 py-3.5 text-xs font-semibold uppercase text-white transition-colors hover:bg-primary-dark"
             >
-              Book Appointment
+              Book An Appointment
             </Link>
             <Link
-              href="/contact"
+              href="/services"
               className="rounded-sm border-2 border-primary bg-white/40 px-6 py-3.5 text-xs font-semibold uppercase text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-white"
             >
-              Book Appointment
+              Explore Services
             </Link>
           </div>
         </div>

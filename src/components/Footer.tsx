@@ -55,7 +55,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-5 text-base leading-snug">
-              In-home care that elevates the human spirit — bringing comfort, dignity, and
+              In-home care that elevates the human spirit bringing comfort, dignity, and
               peace of mind to you and your loved ones.
             </p>
             <div className="mt-6 flex items-center gap-5">
