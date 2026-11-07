@@ -3,30 +3,30 @@ import Link from "next/link";
 
 const columns = [
   {
-    title: "Navigations",
+    title: "More Links",
     links: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "Courses", href: "#" },
-      { label: "Products", href: "#" },
+      { label: "Contact us", href: "/contact" },
+      { label: "Blogs", href: "/blogs" },
     ],
   },
   {
-    title: "Resources",
+    title: "What We Do",
     links: [
-      { label: "Home", href: "/" },
-      { label: "About", href: "/about" },
-      { label: "Applications", href: "#" },
-      { label: "Products", href: "#" },
+      { label: "House Cleaning", href: "/services" },
+      { label: "Medical Care", href: "/services" },
+      { label: "Errand Care", href: "/services" },
+      { label: "Companions", href: "/services" },
     ],
   },
   {
-    title: "Legal",
+    title: "What We Do",
     links: [
-      { label: "Privacy", href: "#" },
-      { label: "Terms & Conditions", href: "#" },
-      { label: "Products", href: "#" },
-      { label: "Certifications", href: "#" },
+      { label: "Laundry & Clothing Care", href: "/services" },
+      { label: "Elderly Care & Assistance", href: "/services" },
+      { label: "Dressing Care Service", href: "/services" },
+      { label: "Personal Hygiene Grooming", href: "/services" },
     ],
   },
 ];
@@ -55,8 +55,8 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-5 text-base leading-snug">
-              Start With the Free Forex Sniper Class, learn the exact framework we use before
-              risking capital.
+              In-home care that elevates the human spirit — bringing comfort, dignity, and
+              peace of mind to you and your loved ones.
             </p>
             <div className="mt-6 flex items-center gap-5">
               <span className="text-sm font-semibold">Connect with us:</span>
@@ -75,9 +75,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:gap-20">
-            {columns.map(({ title, links }) => (
-              <nav key={title} aria-label={title}>
+          <div className="flex flex-wrap gap-x-14 gap-y-10 lg:gap-x-24">
+            {columns.map(({ title, links }, i) => (
+              <nav key={`${title}-${i}`} aria-label={`${title} ${i + 1}`} className="shrink-0">
                 <h3 className="text-sm font-semibold">{title}</h3>
                 <ul className="mt-5 space-y-3.5">
                   {links.map(({ label, href }) => (

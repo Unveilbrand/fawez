@@ -43,7 +43,7 @@ export default function CareServices() {
           </p>
         </div>
 
-        <ul className="w-full max-w-[400px] divide-y-[4px] divide-[#930965]/10 rounded-3xl bg-[#B2DAFFCC] p-6 shadow-[0_3px_30px_#00000040] sm:p-8 lg:mr-4">
+        <ul className="w-full max-w-[400px] divide-y-[4px] divide-[#720142]/10 rounded-3xl bg-[#B2DAFFCC] p-6 shadow-[0_3px_30px_#00000040] sm:p-8 lg:mr-4">
           {items.map(({ icon, title, subtitle, w, h }) => (
             <li key={subtitle} className="flex items-center gap-6 py-5 sm:py-6">
               <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]">

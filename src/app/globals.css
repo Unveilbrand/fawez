@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: #930965;
-  --color-primary-dark: #7a0754;
+  --color-primary: #720142;
+  --color-primary-dark: #720142;
   --font-sans: var(--font-archetica), var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
 

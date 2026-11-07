@@ -33,7 +33,7 @@ export default function AboutMission() {
   return (
     <section className="bg-[#F2F9FF] pt-16 md:pt-24">
       <div className="site-container text-center">
-        <p className="text-sm font-medium uppercase text-primary">About Fawez Helping Hands</p>
+        <p className="text-sm font-medium uppercase lg:text-[16px] text-primary">About Fawez Helping Hands</p>
         <h2 className="mx-auto mt-6 max-w-[640px] text-3xl font-bold text-black sm:text-4xl lg:text-[36px]">
           Because caring goes beyond assistance, it&apos;s about preserving dignity, building
           trust, and making every moment count.

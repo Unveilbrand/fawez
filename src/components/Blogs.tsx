@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { getBlogs, formatBlogDate } from "@/lib/blogs";
 
-function Card({
+export function Card({
   title,
   author,
   date,

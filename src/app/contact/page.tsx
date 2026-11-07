@@ -49,8 +49,18 @@ export default function ContactPage() {
                 A team of experienced professionals ready to provide compassionate care and
                 reliable healthcare support every day.
               </p>
+              <div className="mt-10 h-[260px] flex-none overflow-hidden rounded-xl border border-[#CFE3F7] sm:h-[300px] lg:h-[320px]">
+                <iframe
+                  title="Fawez Helping Hands — 5875 N Lincoln Avenue STE 110, Chicago IL 60659"
+                  src="https://maps.google.com/maps?q=5875%20N%20Lincoln%20Avenue%20STE%20110%2C%20Chicago%2C%20IL%2060659&z=15&output=embed"
+                  className="size-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
               <div className="hidden min-h-8 flex-1 lg:block" aria-hidden />
-              <div className="relative mt-8 h-[280px] flex-none overflow-hidden rounded-xl sm:h-[340px] lg:mt-0 lg:h-[430px]">
+              <div className="relative mt-8 h-[220px] flex-none overflow-hidden rounded-xl sm:h-[260px] lg:mt-6 lg:h-[280px]">
                 <Image
                   src="/images/contact_img.avif"
                   alt="Care professional reviewing a care plan on a tablet"

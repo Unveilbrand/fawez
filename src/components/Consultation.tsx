@@ -110,7 +110,7 @@ export default function Consultation() {
             onSubmit={onSubmit}
             onChange={clearMissing}
             noValidate
-            className="space-y-3.5 rounded-2xl bg-[#B2DAFF] p-3"
+            className="space-y-3.5 rounded-2xl bg-[#B2DAFF] p-6"
           >
             <div className="grid gap-3.5 sm:grid-cols-2">
               <input name="name" type="text" required placeholder="Full Name" aria-label="Full Name" className={fieldClass("name")} />
