@@ -32,6 +32,11 @@ function BookingsDashboard() {
   const [selected, setSelected] = useState<Booking | null>(null);
   const [pendingDelete, setPendingDelete] = useState<Booking | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [mailFor, setMailFor] = useState<Booking | null>(null);
+  const [mailSubject, setMailSubject] = useState("");
+  const [mailMessage, setMailMessage] = useState("");
+  const [mailSending, setMailSending] = useState(false);
+  const [mailStatus, setMailStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -75,6 +80,40 @@ function BookingsDashboard() {
       setPendingDelete(null);
     } finally {
       setDeleting(null);
+    }
+  }
+
+  function openMail(booking: Booking) {
+    setMailFor(booking);
+    setMailSubject(`Re: Your booking — ${booking.subject}`);
+    setMailMessage("");
+    setMailStatus(null);
+  }
+
+  async function sendMail() {
+    if (!mailFor) return;
+    setMailSending(true);
+    setMailStatus(null);
+    try {
+      const res = await fetch(`/api/admin/bookings/${mailFor.id}/mail`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${await getToken()}`,
+        },
+        body: JSON.stringify({ subject: mailSubject, message: mailMessage }),
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        setMailStatus(json.error ?? "Could not send the email.");
+        return;
+      }
+      setMailStatus("Email sent.");
+      setTimeout(() => setMailFor(null), 1200);
+    } catch {
+      setMailStatus("Could not send the email.");
+    } finally {
+      setMailSending(false);
     }
   }
 
@@ -149,10 +188,15 @@ function BookingsDashboard() {
                       </button>
                       <button
                         type="button"
-                        disabled
-                        title="Email coming soon — mail is not configured yet"
-                        aria-label="Send mail (coming soon)"
-                        className="cursor-not-allowed text-gray-300"
+                        onClick={() => openMail(booking)}
+                        disabled={!booking.email}
+                        title={booking.email ? "Send email" : "No email on this booking"}
+                        aria-label="Send mail"
+                        className={
+                          booking.email
+                            ? "text-gray-400 transition-colors hover:text-primary"
+                            : "cursor-not-allowed text-gray-300"
+                        }
                       >
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -225,11 +269,12 @@ function BookingsDashboard() {
             <div className="mt-6 flex gap-3">
               <button
                 type="button"
-                disabled
-                title="Email coming soon — mail is not configured yet"
-                className="flex-1 cursor-not-allowed rounded-lg bg-primary/40 py-3 text-sm font-bold uppercase text-white"
+                onClick={() => selected.email && openMail(selected)}
+                disabled={!selected.email}
+                title={selected.email ? "Send email" : "No email on this booking"}
+                className="flex-1 rounded-lg bg-primary py-3 text-sm font-bold uppercase text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Send Mail (soon)
+                Send Mail
               </button>
               <button
                 type="button"
@@ -240,6 +285,77 @@ function BookingsDashboard() {
                 Delete
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {mailFor && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-4"
+          onClick={() => setMailFor(null)}
+        >
+          <div
+            className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <h2 className="text-lg font-bold text-black">Send Mail</h2>
+              <button
+                type="button"
+                onClick={() => setMailFor(null)}
+                aria-label="Close"
+                className="text-gray-400 hover:text-black"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="mt-4 space-y-4 text-sm">
+              <div>
+                <label className="mb-1 block font-medium text-gray-400">To</label>
+                <p className="rounded-lg bg-[#F5F6FA] px-4 py-3 text-black">
+                  {mailFor.name} &lt;{mailFor.email}&gt;
+                </p>
+              </div>
+              <div>
+                <label htmlFor="mail-subject" className="mb-1 block font-medium text-gray-400">
+                  Subject
+                </label>
+                <input
+                  id="mail-subject"
+                  value={mailSubject}
+                  onChange={(e) => setMailSubject(e.target.value)}
+                  className="w-full rounded-lg border border-gray-200 px-4 py-3 text-black outline-none focus:ring-2 focus:ring-primary/30"
+                />
+              </div>
+              <div>
+                <label htmlFor="mail-message" className="mb-1 block font-medium text-gray-400">
+                  Message
+                </label>
+                <textarea
+                  id="mail-message"
+                  value={mailMessage}
+                  onChange={(e) => setMailMessage(e.target.value)}
+                  rows={6}
+                  placeholder="Write your reply…"
+                  className="w-full resize-y rounded-lg border border-gray-200 px-4 py-3 text-black outline-none focus:ring-2 focus:ring-primary/30"
+                />
+              </div>
+            </div>
+            {mailStatus && (
+              <p className={`mt-3 text-center text-sm ${mailStatus === "Email sent." ? "text-primary" : "text-red-600"}`}>
+                {mailStatus}
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={sendMail}
+              disabled={mailSending || !mailSubject.trim() || !mailMessage.trim()}
+              className="mt-5 w-full rounded-lg bg-primary py-3.5 text-sm font-bold uppercase text-white transition-colors hover:bg-primary-dark disabled:opacity-50"
+            >
+              {mailSending ? "Sending…" : "Send"}
+            </button>
           </div>
         </div>
       )}

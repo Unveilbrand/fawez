@@ -93,7 +93,7 @@ export default function Consultation() {
             </p>
             <ul className="mt-6 grid grid-cols-1 gap-6 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-4">
               {stats.map(({ value, label, icon, w, h }) => (
-                <li key={value} className="flex items-center gap-5">
+                <li key={value} className="flex flex-col items-center gap-3 text-center sm:flex-row sm:gap-5 sm:text-left">
                   <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
                     <Image src={icon} alt="" width={w} height={h} />
                   </span>

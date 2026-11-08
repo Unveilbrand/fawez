@@ -39,7 +39,7 @@ export const services: {
       "Respectful, hands-on assistance with everyday hygiene routines, including toothbrushing, grooming, dressing, and other personal care activities.",
   },
   {
-    title: "Medical Care",
+    title: "Medication Reminder",
     image: "/images/medical_img.png",
     description:
       "We provide timely medication reminders and supportive assistance with daily routines, helping clients follow their prescribed schedules with greater confidence.",

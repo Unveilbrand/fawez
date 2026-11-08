@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { getTransporter } from "@/lib/mail";
 
 // POST /api/bookings — public form endpoint (Contact + Consultation)
 export async function POST(request: Request) {
@@ -22,6 +23,27 @@ export async function POST(request: Request) {
 
   const { error } = await getSupabaseAdmin().from("bookings").insert(booking);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  // Notify the admin inbox — don't fail the booking if the email fails
+  try {
+    await getTransporter().sendMail({
+      from: process.env.MAIL_FROM,
+      to: process.env.SMTP_USER,
+      subject: `New Booking: ${booking.subject}`,
+      text: [
+        `Name: ${booking.name}`,
+        `Email: ${booking.email ?? "—"}`,
+        `Phone: ${booking.phone ?? "—"}`,
+        `Requested: ${booking.date} · ${booking.time}`,
+        `Subject: ${booking.subject}`,
+        "",
+        "Message:",
+        booking.message,
+      ].join("\n"),
+    });
+  } catch (mailError) {
+    console.error("Booking notification email failed:", mailError);
+  }
 
   return NextResponse.json({ ok: true }, { status: 201 });
 }

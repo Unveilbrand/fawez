@@ -15,7 +15,7 @@ const columns = [
     title: "What We Do",
     links: [
       { label: "House Cleaning", href: "/services" },
-      { label: "Medical Care", href: "/services" },
+      { label: "Medication Reminder", href: "/services" },
       { label: "Errand Care", href: "/services" },
       { label: "Companions", href: "/services" },
     ],

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const features = [
   { icon: "/images/expert_icon.png", title: "Expert Team", subtitle: "Friendly & Professional", w: 67, h: 60 },
-  { icon: "/images/medical_icon.png", title: "Medical Care", subtitle: "Intense Personal Care", w: 70, h: 60 },
+  { icon: "/images/medical_icon.png", title: "Medication Reminder", subtitle: "Intense Personal Care", w: 70, h: 60 },
   { icon: "/images/support_icon.png", title: "24/7 Support", subtitle: "Friendly & Professional", w: 59, h: 60 },
 ];
 
@@ -53,7 +53,7 @@ export default function Hero() {
           {features.map(({ icon, title, subtitle, w, h }) => (
             <div
               key={title}
-              className="relative flex items-center gap-6 px-8 py-8 not-last:after:absolute not-last:after:inset-x-0 not-last:after:bottom-0 not-last:after:h-1 not-last:after:translate-y-1/2 not-last:after:bg-white/50 sm:not-last:after:inset-x-auto sm:not-last:after:top-5 sm:not-last:after:right-0 sm:not-last:after:h-auto sm:not-last:after:w-1 sm:not-last:after:translate-x-1/2 sm:not-last:after:translate-y-0 lg:px-12 lg:py-10"
+              className="relative flex flex-col items-center justify-center gap-3 px-8 py-4 lg:py-8 text-center not-last:after:absolute sm:flex-row sm:justify-start sm:gap-6 sm:text-left not-last:after:inset-x-0 not-last:after:bottom-0 not-last:after:h-1 not-last:after:translate-y-1/2 not-last:after:bg-white/50 sm:not-last:after:inset-x-auto sm:not-last:after:top-5 sm:not-last:after:right-0 sm:not-last:after:h-auto sm:not-last:after:w-1 sm:not-last:after:translate-x-1/2 sm:not-last:after:translate-y-0 lg:px-12 lg:py-10"
             >
               <Image src={icon} alt="" width={w} height={h} className="h-9 w-auto shrink-0 lg:h-10" />
               <div>
