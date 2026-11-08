@@ -12,7 +12,7 @@ export default function AboutPage() {
       <main className="flex-1">
         <PageBanner
           title="About Us"
-          subtitle="In A Home Care That Elevates The Human Spirit"
+          subtitle="More Than Helping Hands, We Bring Comfort, Care, and Peace of Mind."
           image="/images/about_bg.png"
           alt="Fawez care team smiling together"
         />

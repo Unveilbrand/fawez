@@ -12,7 +12,7 @@ export default function ServicesPage() {
       <main className="flex-1">
         <PageBanner
           title="Our Services"
-          subtitle="In A Home Care That Elevates The Human Spirit"
+          subtitle="More Than Helping Hands, We Bring Comfort, Care, and Peace of Mind."
           image="/images/services_bg.png"
           position="object-[50%_30%]"
           alt="Caregiver smiling with an elderly woman at home"
