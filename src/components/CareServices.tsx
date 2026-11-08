@@ -43,9 +43,12 @@ export default function CareServices() {
           </p>
         </div>
 
-        <ul className="w-full max-w-[400px] divide-y-[4px] divide-[#720142]/10 rounded-3xl bg-[#B2DAFFCC] p-6 shadow-[0_3px_30px_#00000040] sm:p-8 lg:mr-4">
+        <ul className="grid w-full max-w-[400px] grid-cols-2 rounded-3xl bg-[#B2DAFFCC] p-4 shadow-[0_3px_30px_#00000040] sm:block sm:divide-y-[4px] sm:divide-[#720142]/10 sm:p-8 lg:mr-4">
           {items.map(({ icon, title, subtitle, w, h }) => (
-            <li key={subtitle} className="flex items-center gap-6 py-5 sm:py-6">
+            <li
+              key={subtitle}
+              className="flex flex-col items-center gap-3 border-[#720142]/10 px-2 py-5 text-center max-sm:odd:border-r-4 max-sm:nth-[-n+2]:border-b-4 sm:flex-row sm:gap-6 sm:px-0 sm:py-6 sm:text-left"
+            >
               <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
                 <Image src={icon} alt="" width={w} height={h} />
               </span>

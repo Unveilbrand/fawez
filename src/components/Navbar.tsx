@@ -78,6 +78,13 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   const menuButton = (
     <button
       type="button"
@@ -133,6 +140,13 @@ export default function Navbar() {
 
   return (
     <>
+      {open && (
+        <div
+          aria-hidden
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+        />
+      )}
       <header className="sticky top-0 z-50 bg-white md:static">
         <div className="site-container flex items-center justify-between gap-6 py-3">
           <Link href="/" aria-label="Fawez home">

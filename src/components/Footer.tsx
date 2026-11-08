@@ -77,7 +77,11 @@ export default function Footer() {
 
           <div className="flex flex-wrap gap-x-14 gap-y-10 lg:gap-x-24">
             {columns.map(({ title, links }, i) => (
-              <nav key={`${title}-${i}`} aria-label={`${title} ${i + 1}`} className="shrink-0">
+              <nav
+                key={`${title}-${i}`}
+                aria-label={`${title} ${i + 1}`}
+                className={`shrink-0${i === 2 ? " hidden sm:block" : ""}`}
+              >
                 <h3 className="text-sm font-semibold">{title}</h3>
                 <ul className="mt-5 space-y-3.5">
                   {links.map(({ label, href }) => (

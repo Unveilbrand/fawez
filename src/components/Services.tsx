@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Carousel from "@/components/Carousel";
 
 export const services: {
   title: string;
@@ -79,7 +80,11 @@ export default function Services() {
           Compassionate Support for Every Part of Daily Living
         </h2>
 
-        <div className="mx-auto mt-12 grid max-w-[1100px] gap-x-6 gap-y-[34px] sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-[42px]">
+        <Carousel
+          className="mx-auto mt-12 max-w-[1100px] lg:mt-16"
+          gridClassName="sm:grid-cols-2 sm:gap-x-6 sm:gap-y-[34px] lg:grid-cols-3 lg:gap-x-8 lg:gap-y-[42px]"
+          itemLabel="service"
+        >
           {services.map(({ title, description, image }) => (
             <article
               key={title}
@@ -99,7 +104,7 @@ export default function Services() {
               </div>
             </article>
           ))}
-        </div>
+        </Carousel>
 
         <div className="mt-12 flex justify-center lg:mt-16">
           <Link

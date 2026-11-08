@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { getBlogs, formatBlogDate } from "@/lib/blogs";
+import Carousel from "@/components/Carousel";
 
 export function Card({
   title,
@@ -60,7 +61,7 @@ async function PostGrid() {
   }
 
   return (
-    <div className="mx-auto mt-12 grid max-w-[1100px] gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
+    <Carousel className="mx-auto mt-12 max-w-[1100px] lg:mt-16" itemLabel="post">
       {blogs.map((blog) => (
         <Card
           key={blog.id}
@@ -72,7 +73,7 @@ async function PostGrid() {
           href={`/blogs/${blog.slug}`}
         />
       ))}
-    </div>
+    </Carousel>
   );
 }
 
