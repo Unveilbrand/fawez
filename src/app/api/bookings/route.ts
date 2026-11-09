@@ -29,15 +29,21 @@ export async function POST(request: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   // Notify the admin inbox — don't fail the booking if the email fails
+  let mailError: string | null = null;
   try {
     await getTransporter().sendMail({
       from: process.env.MAIL_FROM,
       to: process.env.SMTP_USER,
       ...bookingAdminEmail({ ...booking, id: row?.id }),
     });
-  } catch (mailError) {
-    console.error("Booking notification email failed:", mailError);
+    console.info(`[bookings] notification email sent for booking ${row?.id}`);
+  } catch (err) {
+    mailError = err instanceof Error ? err.message : String(err);
+    console.error(`[bookings] notification email failed for booking ${row?.id}:`, err);
   }
 
-  return NextResponse.json({ ok: true }, { status: 201 });
+  return NextResponse.json(
+    { ok: true, mailSent: !mailError, ...(mailError ? { mailError } : {}) },
+    { status: 201 }
+  );
 }

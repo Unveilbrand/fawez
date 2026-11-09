@@ -31,9 +31,10 @@ export async function POST(request: Request, ctx: { params: Promise<{ id: string
       subject,
       text: message,
     });
-  } catch (mailError) {
-    console.error("Booking mail failed:", mailError);
-    return NextResponse.json({ error: "Could not send the email." }, { status: 500 });
+  } catch (err) {
+    console.error(`[admin-mail] failed for booking ${id}:`, err);
+    const msg = err instanceof Error ? err.message : "Unknown error";
+    return NextResponse.json({ error: `Could not send the email: ${msg}` }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

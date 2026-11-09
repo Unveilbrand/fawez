@@ -2,14 +2,22 @@ import nodemailer from "nodemailer";
 
 // Server-only SMTP transport (cPanel mailbox). Never expose these env vars to the client.
 export function getTransporter() {
+  const { SMTP_HOST, SMTP_PORT, SMTP_SECURE, SMTP_USER, SMTP_PASS } = process.env;
+  const missing = ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS"].filter(
+    (k) => !process.env[k]
+  );
+  if (missing.length) {
+    throw new Error(`SMTP not configured — missing env vars: ${missing.join(", ")}`);
+  }
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT ?? 465),
-    secure: process.env.SMTP_SECURE === "true",
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
+    host: SMTP_HOST,
+    port: Number(SMTP_PORT ?? 465),
+    secure: SMTP_SECURE === "true",
+    auth: { user: SMTP_USER, pass: SMTP_PASS },
+    // Fail fast instead of hanging until the serverless function times out
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
 }
 
