@@ -101,7 +101,19 @@ export default function ContactForm() {
           <label htmlFor="cf-date" className={label}>
             Date &amp; Time*
           </label>
-          <input id="cf-date" name="date" type="date" required className={fieldClass("date", `${input} min-w-0 text-gray-400 max-sm:appearance-none`)} />
+          <input
+            id="cf-date"
+            name="date"
+            type="text"
+            required
+            placeholder="Select Date"
+            aria-label="Date"
+            onFocus={(e) => (e.currentTarget.type = "date")}
+            onBlur={(e) => {
+              if (!e.currentTarget.value) e.currentTarget.type = "text";
+            }}
+            className={fieldClass("date", `${input} min-w-0 max-sm:appearance-none invalid:text-gray-400`)}
+          />
         </div>
         <div>
           <label htmlFor="cf-time" className={label}>

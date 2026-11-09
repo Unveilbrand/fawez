@@ -118,7 +118,18 @@ export default function Consultation() {
             </div>
             <input name="email" type="email" required placeholder="Email" aria-label="Email" className={fieldClass("email")} />
             <div className="grid gap-3.5 sm:grid-cols-2">
-              <input name="date" type="date" required aria-label="Date" className={fieldClass("date", `${field} min-w-0 text-gray-400 max-sm:appearance-none`)} />
+              <input
+                name="date"
+                type="text"
+                required
+                placeholder="Select Date"
+                aria-label="Date"
+                onFocus={(e) => (e.currentTarget.type = "date")}
+                onBlur={(e) => {
+                  if (!e.currentTarget.value) e.currentTarget.type = "text";
+                }}
+                className={fieldClass("date", `${field} min-w-0 max-sm:appearance-none invalid:text-gray-400`)}
+              />
               <select name="time" required defaultValue="" aria-label="Select time" className={fieldClass("time", `${field} min-w-0 invalid:text-gray-400`)}>
                 <option value="" disabled>
                   Select Time
