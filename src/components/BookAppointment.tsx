@@ -101,7 +101,7 @@ function BookingForm({ subject, onClose }: { subject: string; onClose: () => voi
       </div>
       <input name="email" type="email" required placeholder="Email*" aria-label="Email" className={`${fieldClass("email")} mt-4`} />
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <input name="date" type="date" required aria-label="Date" className={fieldClass("date", `${input} text-gray-400`)} />
+        <input name="date" type="date" required aria-label="Date" className={fieldClass("date", `${input} min-w-0 text-gray-400 max-sm:appearance-none`)} />
         <select name="time" required defaultValue="" aria-label="Select time" className={fieldClass("time", `${input} invalid:text-gray-400`)}>
           <option value="" disabled>
             Select Time*

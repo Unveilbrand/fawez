@@ -101,7 +101,7 @@ export default function ContactForm() {
           <label htmlFor="cf-date" className={label}>
             Date &amp; Time*
           </label>
-          <input id="cf-date" name="date" type="date" required className={fieldClass("date", `${input} text-gray-400`)} />
+          <input id="cf-date" name="date" type="date" required className={fieldClass("date", `${input} min-w-0 text-gray-400 max-sm:appearance-none`)} />
         </div>
         <div>
           <label htmlFor="cf-time" className={label}>

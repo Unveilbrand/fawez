@@ -72,7 +72,7 @@ export default function Consultation() {
   }
 
   return (
-    <section className="relative isolate overflow-hidden py-16 md:py-24 md:pb-0">
+    <section className="relative isolate overflow-hidden pt-16 pb-0 md:py-24">
       <Image
         src="/images/consult_bg.png"
         alt=""
@@ -83,11 +83,11 @@ export default function Consultation() {
       <div className="absolute inset-0 -z-10 bg-white/25" />
       <div className="site-container">
         <div className="grid items-center gap-10 rounded-t-[40px] bg-[#B2DAFFA6] px-2 py-10 sm:px-10 md:py-14 lg:grid-cols-2 lg:gap-16 lg:px-12 lg:py-12 xl:px-20">
-          <div>
+          <div className="text-center sm:text-left">
             <h2 className="text-3xl font-bold text-black sm:text-4xl lg:text-[36px]">
               Get A Consultation
             </h2>
-            <p className="mt-3 max-w-[480px] text-sm leading-snug text-black">
+            <p className="mx-auto mt-3 max-w-[480px] text-sm leading-snug text-black sm:mx-0">
               We provide respectful assistance with dressing, changing clothes, and daily grooming
               routines, helping clients maintain their dignity, comfort, and confidence
             </p>
@@ -118,8 +118,8 @@ export default function Consultation() {
             </div>
             <input name="email" type="email" required placeholder="Email" aria-label="Email" className={fieldClass("email")} />
             <div className="grid gap-3.5 sm:grid-cols-2">
-              <input name="date" type="date" required aria-label="Date" className={fieldClass("date", `${field} text-gray-400`)} />
-              <select name="time" required defaultValue="" aria-label="Select time" className={fieldClass("time", `${field} invalid:text-gray-400`)}>
+              <input name="date" type="date" required aria-label="Date" className={fieldClass("date", `${field} min-w-0 text-gray-400 max-sm:appearance-none`)} />
+              <select name="time" required defaultValue="" aria-label="Select time" className={fieldClass("time", `${field} min-w-0 invalid:text-gray-400`)}>
                 <option value="" disabled>
                   Select Time
                 </option>

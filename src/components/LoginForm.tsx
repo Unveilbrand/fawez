@@ -39,7 +39,9 @@ export default function LoginForm() {
       });
       const { isAdmin } = await res.json();
 
-      router.push(isAdmin ? "/admin" : "/");
+      const next = new URLSearchParams(window.location.search).get("next");
+      const target = next && next.startsWith("/") && !next.startsWith("//") ? next : null;
+      router.push(isAdmin ? (target ?? "/admin") : "/");
       router.refresh();
     } catch {
       setError("Something went wrong. Please try again.");

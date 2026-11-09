@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
-import { getTransporter } from "@/lib/mail";
+import { getTransporter, bookingAdminEmail } from "@/lib/mail";
 
 // POST /api/bookings — public form endpoint (Contact + Consultation)
 export async function POST(request: Request) {
@@ -21,7 +21,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please fill in all required fields." }, { status: 400 });
   }
 
-  const { error } = await getSupabaseAdmin().from("bookings").insert(booking);
+  const { data: row, error } = await getSupabaseAdmin()
+    .from("bookings")
+    .insert(booking)
+    .select("id")
+    .single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   // Notify the admin inbox — don't fail the booking if the email fails
@@ -29,17 +33,7 @@ export async function POST(request: Request) {
     await getTransporter().sendMail({
       from: process.env.MAIL_FROM,
       to: process.env.SMTP_USER,
-      subject: `New Booking: ${booking.subject}`,
-      text: [
-        `Name: ${booking.name}`,
-        `Email: ${booking.email ?? "—"}`,
-        `Phone: ${booking.phone ?? "—"}`,
-        `Requested: ${booking.date} · ${booking.time}`,
-        `Subject: ${booking.subject}`,
-        "",
-        "Message:",
-        booking.message,
-      ].join("\n"),
+      ...bookingAdminEmail({ ...booking, id: row?.id }),
     });
   } catch (mailError) {
     console.error("Booking notification email failed:", mailError);

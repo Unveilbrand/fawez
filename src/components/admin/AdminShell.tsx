@@ -21,7 +21,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         data: { session },
       } = await supabase.auth.getSession();
       if (!session?.user?.email) {
-        router.replace("/login");
+        const next = encodeURIComponent(window.location.pathname + window.location.search);
+        router.replace(`/login?next=${next}`);
         return;
       }
       const res = await fetch("/api/auth/admin-check", {

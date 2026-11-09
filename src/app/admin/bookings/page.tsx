@@ -45,8 +45,13 @@ function BookingsDashboard() {
         headers: { Authorization: `Bearer ${await getToken()}` },
       });
       const json = await res.json();
-      if (res.ok) setBookings(json.bookings ?? []);
-      else setError(json.error ?? "Could not load bookings.");
+      if (res.ok) {
+        const list = (json.bookings ?? []) as Booking[];
+        setBookings(list);
+        const view = new URLSearchParams(window.location.search).get("view");
+        const target = view && list.find((b) => b.id === view);
+        if (target) setSelected(target);
+      } else setError(json.error ?? "Could not load bookings.");
       setLoading(false);
     })();
   }, []);
