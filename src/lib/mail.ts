@@ -65,13 +65,24 @@ export function bookingAdminEmail(booking: {
     `View booking: ${link}`,
   ].join("\n");
 
-  const cell = (label: string, value: string, border: boolean) => `
-      <td width="33.3%" style="padding:14px 10px;text-align:center;${
+  const icon = (name: string, size: number) =>
+    `<td width="36" valign="middle"><div style="width:36px;height:36px;border-radius:50%;background:#ffffff;text-align:center;line-height:36px;"><img src="${base}/images/email/${name}.png" alt="" width="${size}" height="${size}" style="display:inline-block;vertical-align:middle;" /></div></td>`;
+
+  const cell = (iconName: string, label: string, value: string, border: boolean) => `
+      <td width="33.3%" style="padding:12px 8px;${
         border ? "border-right:1px solid #c9e2f8;" : ""
       }">
-        <div style="font-size:11px;color:#555;text-transform:uppercase;letter-spacing:.5px;">${label}</div>
-        <div style="font-size:14px;font-weight:bold;color:#000;margin-top:3px;">${value}</div>
+        <table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr>
+          ${icon(iconName, 18)}
+          <td valign="middle" style="padding-left:8px;">
+            <div style="font-size:11px;color:#555;">${label}</div>
+            <div style="font-size:13px;font-weight:bold;color:#000;margin-top:2px;">${value}</div>
+          </td>
+        </tr></table>
       </td>`;
+
+  const social = (name: string) =>
+    `<a href="#" style="display:inline-block;margin:0 7px;"><img src="${base}/images/email/${name}.png" alt="${name}" width="18" height="18" style="display:inline-block;" /></a>`;
 
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#f5f6fa;font-family:Arial,Helvetica,sans-serif;">
@@ -94,9 +105,9 @@ export function bookingAdminEmail(booking: {
     </div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:32px;background:#d8ecff;border-radius:12px;">
       <tr>
-        ${cell("Customer", esc(booking.name), true)}
-        ${cell("Date", fmtDate(booking.date), true)}
-        ${cell("Time", esc(booking.time), false)}
+        ${cell("adults", "Customer", esc(booking.name), true)}
+        ${cell("date", "Date", fmtDate(booking.date), true)}
+        ${cell("time", "Time", esc(booking.time), false)}
       </tr>
     </table>
     <p style="margin:28px 0 0;text-align:center;font-size:12px;color:#333;">
@@ -105,13 +116,11 @@ export function bookingAdminEmail(booking: {
     </p>
     <hr style="border:none;border-top:1px solid #e5e5e5;margin:24px 0;" />
     <p style="margin:0;text-align:center;font-size:11px;letter-spacing:1px;color:#333;">
-      FOLLOW US<br/><br/>
-      <a href="${base}" style="color:#720142;text-decoration:none;font-weight:bold;">Facebook</a>
-      &nbsp;·&nbsp;
-      <a href="${base}" style="color:#720142;text-decoration:none;font-weight:bold;">Instagram</a>
-      &nbsp;·&nbsp;
-      <a href="${base}" style="color:#720142;text-decoration:none;font-weight:bold;">TikTok</a>
+      FOLLOW US
     </p>
+    <div style="margin-top:10px;text-align:center;">
+      ${social("facebook")}${social("twitter")}${social("instagram")}
+    </div>
   </div>
 </body></html>`;
 
