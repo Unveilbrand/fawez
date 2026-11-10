@@ -88,7 +88,7 @@ export default function Services() {
 
         <Carousel
           className="mx-auto mt-12 max-w-[1100px] lg:mt-16"
-          gridClassName="sm:grid-cols-2 sm:gap-x-6 sm:gap-y-[34px] lg:grid-cols-3 lg:gap-x-8 lg:gap-y-[42px]"
+          gridClassName="sm:grid-cols-2 sm:gap-x-6 sm:gap-y-[34px] lg:grid-cols-3 lg:gap-x-8 lg:gap-y-[42px] lg:[&>*:last-child]:col-start-2"
           itemLabel="service"
         >
           {services.map(({ title, description, image }) => (
