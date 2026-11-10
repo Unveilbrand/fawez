@@ -15,7 +15,7 @@ const contactCards = [
     title: "Send an email",
     text: "Send our team an email and we'll get back to you shortly",
     action: "Email us now",
-    href: "mailto:info@fawezhelpinghands.com",
+    href: "mailto:admin@fawezhelpinghands.com",
   },
 ];
 
