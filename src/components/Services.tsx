@@ -9,6 +9,12 @@ export const services: {
   imageZoom?: boolean;
 }[] = [
   {
+    title: "Homemaker Services",
+    image: "/images/homemaker_img.png",
+    description:
+      "We provide thoughtful assistance with everyday household tasks, including meal preparation, light housekeeping, and daily chores, helping clients enjoy a clean, comfortable living environment.",
+  },
+  {
     title: "Laundry & Clothing Care",
     image: "/images/laundry_img.png",
     description:
