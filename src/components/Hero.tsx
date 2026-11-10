@@ -33,11 +33,11 @@ export default function Hero() {
       <div className="site-container pt-14 md:pt-20 lg:pt-24">
         <div className="max-w-xl">
           <h1 className="text-4xl leading-[1.1] text-black sm:text-5xl lg:text-[56px]">
-            In A <span className="font-bold">Home Care</span>
+            In-Home <span className="font-bold">Care</span>
             <br />
-            That Elevates The
+            That <span className="font-bold">Elevates</span> The
             <br />
-            <span className="font-bold">Human Spirit</span>
+            <span className="font-bold">Human</span> Spirit
           </h1>
           <p className="mt-6 max-w-md text-sm leading-snug text-black sm:text-base lg:text-[18px]">
             Experience personalized, reliable in-home care that brings comfort and peace of mind

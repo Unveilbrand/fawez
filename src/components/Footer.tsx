@@ -14,6 +14,7 @@ const columns = [
   {
     title: "What We Do",
     links: [
+      { label: "Homemaker Services", href: "/services" },
       { label: "House Cleaning", href: "/services" },
       { label: "Medication Reminder", href: "/services" },
       { label: "Errand Care", href: "/services" },
