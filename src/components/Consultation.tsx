@@ -72,7 +72,7 @@ export default function Consultation() {
   }
 
   return (
-    <section className="relative isolate overflow-hidden pt-16 pb-0 md:py-24">
+    <section className="relative isolate overflow-hidden pt-16 md:pt-24">
       <Image
         src="/images/consult_bg.png"
         alt=""
