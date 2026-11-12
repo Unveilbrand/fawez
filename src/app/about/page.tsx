@@ -15,7 +15,7 @@ export default function AboutPage() {
           title="About Us"
           subtitle="More Than Helping Hands, We Bring Comfort, Care, and Peace of Mind."
           image="/images/about_bg.png"
-          alt="Fawez care team smiling together"
+          alt="Fawez care team smiling"
         />
         <AboutMission />
         <AboutStats />
