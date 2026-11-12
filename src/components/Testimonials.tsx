@@ -5,44 +5,36 @@ import { useState } from "react";
 
 const testimonials = [
   {
-    name: "Fatima Al-Hassan",
+    name: "Philip Watson",
     role: "Event planner",
-    image: "/images/testimonial_img.jpg",
+    image: "/images/testimonial_img_1.jpg",
     rating: 5,
     quote:
-      "Fawez Helping Hands has made a huge difference in my aunt’s life. The support, patience and compassion are second to none. The caregivers are wonderful and treat my aunt with so much kindness and respect. It gives me peace of mind.",
+      "I found it so difficult to wash my clothes and iron them as well. But thanks to Fawezhelpinghands that gave me rest of mind from these.",
   },
   {
-    name: "Fatima Al-Hassan",
+    name: "Olivia Spencer",
     role: "Event planner",
-    image: "/images/testimonial_img.jpg",
+    image: "/images/testimonial_img_2.jpg",
     rating: 5,
     quote:
-      "Fawez Helping Hands has made a huge difference in my aunt’s life. The support, patience and compassion are second to none. The caregivers are wonderful and treat my aunt with so much kindness and respect. It gives me peace of mind.",
+      "Fawezhelpinhands are my companions, they help in dealing with annoying, frustrating or even offensive comments from family and friends",
   },
   {
-    name: "Fatima Al-Hassan",
+    name: "Reni Eddo",
     role: "Event planner",
-    image: "/images/testimonial_img.jpg",
+    image: "/images/testimonial_img_3.jpg",
     rating: 5,
     quote:
-      "Fawez Helping Hands has made a huge difference in my aunt’s life. The support, patience and compassion are second to none. The caregivers are wonderful and treat my aunt with so much kindness and respect. It gives me peace of mind.",
+      "I am highly delighted that I discovered Fawezhelpinghands. They have really helped me in taking care of my grandma, with their well trained staff.",
   },
   {
-    name: "Fatima Al-Hassan",
+    name: "Amanda Wells",
     role: "Event planner",
-    image: "/images/testimonial_img.jpg",
+    image: "/images/testimonial_img_4.jpg",
     rating: 5,
     quote:
-      "Fawez Helping Hands has made a huge difference in my aunt’s life. The support, patience and compassion are second to none. The caregivers are wonderful and treat my aunt with so much kindness and respect. It gives me peace of mind.",
-  },
-  {
-    name: "Fatima Al-Hassan",
-    role: "Event planner",
-    image: "/images/testimonial_img.jpg",
-    rating: 5,
-    quote:
-      "Fawez Helping Hands has made a huge difference in my aunt’s life. The support, patience and compassion are second to none. The caregivers are wonderful and treat my aunt with so much kindness and respect. It gives me peace of mind.",
+      "I loved Fawezhelpinghands, they assisted in using my drugs any time I forgot to use them. They are really the trusted Caregivers!.",
   },
 ];
 

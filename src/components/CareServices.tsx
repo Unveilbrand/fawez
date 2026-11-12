@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 
 const items = [
   { icon: "/images/adults_icon.svg", title: "We Care For", subtitle: "The Adults", w: 24, h: 24 },
@@ -8,15 +8,29 @@ const items = [
 ];
 
 export default function CareServices() {
+  const common = {
+    alt: "Caregiver helping a young girl walk with a pediatric walker",
+    fill: true,
+    sizes: "100vw",
+  };
+  const {
+    props: { srcSet: desktop },
+  } = getImageProps({ ...common, src: "/images/new_services_bg.png" });
+  const {
+    props: { srcSet: mobile, ...rest },
+  } = getImageProps({ ...common, src: "/images/possible_bg_mobile.png" });
+
   return (
     <section className="relative isolate overflow-hidden">
-      <Image
-        src="/images/new_services_bg.png"
-        alt="Caregiver helping a young girl walk with a pediatric walker"
-        fill
-        sizes="100vw"
-        className="-z-10 object-cover object-center -translate-x-[7%] scale-110"
-      />
+      <picture>
+        <source media="(min-width: 640px)" srcSet={desktop} />
+        <source srcSet={mobile} />
+        <img
+          {...rest}
+          alt={common.alt}
+          className="-z-10 object-cover object-top sm:-translate-x-[7%] sm:scale-110 sm:object-center"
+        />
+      </picture>
       <div
         className="absolute inset-0 -z-10"
         style={{

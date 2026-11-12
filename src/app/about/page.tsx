@@ -4,6 +4,7 @@ import PageBanner from "@/components/PageBanner";
 import AboutMission from "@/components/AboutMission";
 import AboutStats from "@/components/AboutStats";
 import CareServices from "@/components/CareServices";
+import Consultation from "@/components/Consultation"
 
 export default function AboutPage() {
   return (
@@ -19,6 +20,7 @@ export default function AboutPage() {
         <AboutMission />
         <AboutStats />
         <CareServices />
+        <Consultation />
       </main>
       <Footer />
     </>
