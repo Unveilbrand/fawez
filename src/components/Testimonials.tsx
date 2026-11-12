@@ -6,7 +6,6 @@ import { useState } from "react";
 const testimonials = [
   {
     name: "Philip Watson",
-    role: "Event planner",
     image: "/images/testimonial_img_1.jpg",
     rating: 5,
     quote:
@@ -14,7 +13,6 @@ const testimonials = [
   },
   {
     name: "Olivia Spencer",
-    role: "Event planner",
     image: "/images/testimonial_img_2.jpg",
     rating: 5,
     quote:
@@ -22,7 +20,6 @@ const testimonials = [
   },
   {
     name: "Reni Eddo",
-    role: "Event planner",
     image: "/images/testimonial_img_3.jpg",
     rating: 5,
     quote:
@@ -30,7 +27,6 @@ const testimonials = [
   },
   {
     name: "Amanda Wells",
-    role: "Event planner",
     image: "/images/testimonial_img_4.jpg",
     rating: 5,
     quote:
@@ -76,7 +72,7 @@ export default function Testimonials() {
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${active * 100}%)` }}
             >
-              {testimonials.map(({ name, role, image, rating, quote }, i) => (
+              {testimonials.map(({ name, image, rating, quote }, i) => (
                 <figure key={i} className="w-full shrink-0" aria-hidden={i !== active}>
                   <div className="flex items-start justify-between gap-4">
                     <div className="mt-6 flex gap-1" aria-label={`${rating} out of 5 stars`}>
@@ -106,7 +102,6 @@ export default function Testimonials() {
                     />
                     <div>
                       <p className="text-lg font-semibold text-black">{name}</p>
-                      <p className="text-sm font-medium text-primary">{role}</p>
                     </div>
                   </figcaption>
                 </figure>
