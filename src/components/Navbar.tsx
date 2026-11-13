@@ -165,7 +165,9 @@ export default function Navbar() {
               Chicago IL, 60659
             </ContactItem>
             <ContactItem icon="/images/phone_icon.svg" title="Call Us:">
-              (847)-600-1096, (773)-544-3775
+              (847)-600-3096, (773)-544-3775
+              <br />
+              Fax: (847)-600-3089
             </ContactItem>
             <Link
               href="/login"
@@ -202,7 +204,9 @@ export default function Navbar() {
                 Chicago IL, 60659
               </ContactItem>
               <ContactItem icon="/images/phone_icon.svg" title="Call Us:">
-                (847)-600-1096, (773)-544-3775
+                (847)-600-3096, (773)-544-3775
+                <br />
+                Fax: (847)-600-3089
               </ContactItem>
             </div>
             <div className="flex items-center justify-between">

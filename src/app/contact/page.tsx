@@ -7,9 +7,9 @@ import PageBanner from "@/components/PageBanner";
 const contactCards = [
   {
     title: "Call us today",
-    text: "You can call our expert team (847)-600-1096, (773)-544-3775 for enquiries.",
+    text: "You can call our expert team (847)-600-3096, (773)-544-3775 or send a fax to (847)-600-3089 for enquiries.",
     action: "Call us now",
-    href: "tel:+18476001096",
+    href: "tel:+18476003096",
   },
   {
     title: "Send an email",
