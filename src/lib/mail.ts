@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import path from "path";
 
 // Server-only SMTP transport (cPanel mailbox). Never expose these env vars to the client.
 export function getTransporter() {
@@ -66,7 +67,7 @@ export function bookingAdminEmail(booking: {
   ].join("\n");
 
   const icon = (name: string, size: number) =>
-    `<td width="36" valign="middle"><div style="width:36px;height:36px;border-radius:50%;background:#ffffff;text-align:center;line-height:36px;"><img src="${base}/images/email/${name}.png" alt="" width="${size}" height="${size}" style="display:inline-block;vertical-align:middle;" /></div></td>`;
+    `<td width="36" valign="middle"><div style="width:36px;height:36px;border-radius:50%;background:#ffffff;text-align:center;line-height:36px;"><img src="cid:${name}-icon" alt="" width="${size}" height="${size}" style="display:inline-block;vertical-align:middle;" /></div></td>`;
 
   const cell = (iconName: string, label: string, value: string, border: boolean) => `
       <td width="33.3%" style="padding:12px 8px;${
@@ -82,16 +83,16 @@ export function bookingAdminEmail(booking: {
       </td>`;
 
   const social = (name: string) =>
-    `<a href="#" style="display:inline-block;margin:0 7px;"><img src="${base}/images/email/${name}.png" alt="${name}" width="18" height="18" style="display:inline-block;" /></a>`;
+    `<a href="#" style="display:inline-block;margin:0 7px;"><img src="cid:${name}-icon" alt="${name}" width="18" height="18" style="display:inline-block;" /></a>`;
 
   const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#f5f6fa;font-family:Arial,Helvetica,sans-serif;">
   <div style="max-width:560px;margin:0 auto;background:#ffffff;padding:36px 24px;">
     <div style="text-align:center;">
-      <img src="${base}/images/fawez_logo.png" alt="Fawez Helping Hands" width="200" style="max-width:200px;height:auto;" />
+      <img src="cid:fawez-logo" alt="Fawez Helping Hands" width="200" style="max-width:200px;height:auto;" />
     </div>
     <div style="text-align:center;margin-top:24px;">
-      <img src="${base}/images/mail_img.png" alt="Appointment booked" width="320" style="max-width:100%;height:auto;" />
+      <img src="cid:mail-illustration" alt="Appointment booked" width="320" style="max-width:100%;height:auto;" />
     </div>
     <hr style="border:none;border-top:1px solid #e5e5e5;margin:32px 0;" />
     <h1 style="margin:0;text-align:center;font-size:22px;color:#720142;">New Appointment Booking</h1>
@@ -124,5 +125,22 @@ export function bookingAdminEmail(booking: {
   </div>
 </body></html>`;
 
-  return { subject: `New Booking: ${booking.subject}`, html, text };
+  // Embed images inline so recipients never need to load remote resources
+  const attach = (file: string, cid: string) => ({
+    filename: file,
+    path: path.join(process.cwd(), "public", "images", file),
+    cid,
+  });
+  const attachments = [
+    attach("fawez_logo.png", "fawez-logo"),
+    attach("mail_img.png", "mail-illustration"),
+    attach("email/adults.png", "adults-icon"),
+    attach("email/date.png", "date-icon"),
+    attach("email/time.png", "time-icon"),
+    attach("email/facebook.png", "facebook-icon"),
+    attach("email/twitter.png", "twitter-icon"),
+    attach("email/instagram.png", "instagram-icon"),
+  ];
+
+  return { subject: `New Booking: ${booking.subject}`, html, text, attachments };
 }
