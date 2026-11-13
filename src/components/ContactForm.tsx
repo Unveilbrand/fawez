@@ -99,7 +99,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label htmlFor="cf-date" className={label}>
-            Date &amp; Time*
+            Date*
           </label>
           <input
             id="cf-date"
@@ -115,9 +115,9 @@ export default function ContactForm() {
             className={fieldClass("date", `${input} min-w-0 max-sm:appearance-none invalid:text-gray-400`)}
           />
         </div>
-        <div>
+        <div className="sm:col-span-2">
           <label htmlFor="cf-time" className={label}>
-            &nbsp;
+            Time*
           </label>
           <select id="cf-time" name="time" required defaultValue="" aria-label="Select time" className={fieldClass("time", `${input} invalid:text-gray-400`)}>
             <option value="" disabled>
